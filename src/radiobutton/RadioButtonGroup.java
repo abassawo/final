@@ -1,5 +1,7 @@
 package radiobutton;
 
+import java.awt.*;
+
 /**
  * Represents a group of "radio buttons": toggle buttons for which exactly one is selected
  * at a given time. If a different button is selected, the previously-selected button is
@@ -7,8 +9,15 @@ package radiobutton;
  *
  * Buttons are numbered from 0 to one less than the number of buttons. For example, if the
  * button group has 4 buttons, they are numbered 0, 1, 2, and 3.
+ *
+ *
+ * For timing's sake and space the button groups here are being represented as an array of integers with possible values
+ * from 0 to 1. 0 representing unselected, and 1 representing selected.
  */
+
+
 public class RadioButtonGroup {
+    private int[] buttons;
 
     /**
      * Creates a group of radio buttons.
@@ -21,7 +30,8 @@ public class RadioButtonGroup {
      *   The initial button number is invalid.
      */
     public RadioButtonGroup(int numButtons, int initial) {
-        // TODO: Implement this method.
+        buttons = new int[numButtons];
+        buttons[initial] = 1;
     }
 
     /**
@@ -39,7 +49,15 @@ public class RadioButtonGroup {
      *   The button number is invalid.
      */
     public void select(int button) {
-        // TODO: Implement this method.
+        //enable
+        buttons[button] = 1;
+
+        //disable other buttons
+        for(int i : buttons){
+            if(i != button) {
+                buttons[i] = 0;
+            }
+        }
     }
 
     /**
@@ -50,9 +68,9 @@ public class RadioButtonGroup {
      *   The button number is invalid.
      */
     public boolean isSelected(int button) {
-        // TODO: Implement this method.
-        return false;
+        return buttons[button] == 1;
     }
+
 
     // TODO: Add attributes and helper methods as needed.
 
