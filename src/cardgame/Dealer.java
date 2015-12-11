@@ -53,15 +53,15 @@ public class Dealer {
     public static List<List<Card>> deal(int numPlayers, int numCards) {
         List<List<Card>> gameHand = new ArrayList<List<Card>>();
         ArrayList<Card>playerCards;
-        playerCards = new ArrayList<Card>();
+        for (int j = 1; j < numCards ; j++){
+         playerCards = new ArrayList<Card>();
+            for (int i = j; i <= numPlayers ; i++) {
+                playerCards.add(getShuffledDeck().get(i));
+                gameHand.add(playerCards);
+            }
 
-        for (int j = 0; j < numPlayers; j++){
-               playerCards.add(getShuffledDeck().get(j));
         }
 
-        for (int i = 1; i < numCards ; i++) {
-            gameHand.add(playerCards);
-        }
 
         return gameHand;
     }
