@@ -49,21 +49,27 @@ public class Dealer {
      *   A list of players' hands. The number of hands is 'numPlayers'. Each hand contains
      *   cards; the size of each hand is 'numCards'. No card is present more than once.
      */
+    //FIXME
     public static List<List<Card>> deal(int numPlayers, int numCards) {
-        // TODO: Finish this method as follows:
-        // - Get a shuffled deck of cards.
-        // - Create a list of hands.
-        // - For each hand,
-        //   - Create a list of cards.
-        //   - Add cards to the hand, removing them from the deck.
-        //   - Add the hand to the list of hands.
-        // - Return the list of hands.
-        return null;
+        List<List<Card>> gameHand = new ArrayList<List<Card>>();
+        ArrayList<Card>playerCards;
+        playerCards = new ArrayList<Card>();
+
+        for (int j = 0; j < numPlayers; j++){
+               playerCards.add(getShuffledDeck().get(j));
+        }
+
+        for (int i = 1; i < numCards ; i++) {
+            gameHand.add(playerCards);
+        }
+
+        return gameHand;
     }
 
     public static void main(String[] args) {
         // Deal four 5-card hands, and print them out.
-        List<List<Card>> hands = deal(4, 5);
+        List<List<Card>> hands = deal(4, 4);
+
         for (int h = 0; h < hands.size(); ++h) {
             System.out.println("player " + h + " holds:");
             for (Card c : hands.get(h))

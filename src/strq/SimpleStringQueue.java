@@ -4,10 +4,10 @@ package strq;
  * Created by c4q-Abass on 12/10/15.
  */
 public class SimpleStringQueue implements StringQueue{
-    public static StringBuilder queueStr;
+    public static String queueStr;
 
     public SimpleStringQueue(){
-        this.queueStr = new StringBuilder();
+        this.queueStr = new String();
     }
 
     @Override
@@ -17,13 +17,14 @@ public class SimpleStringQueue implements StringQueue{
 
     @Override
     public void enqueue(String string) {
-            queueStr.append(string);
+            queueStr += string;
     }
 
     @Override
     public String dequeue(int length) {
-        queueStr = queueStr.replace(queueStr.length() -  length, queueStr.length(), "");
-        return queueStr.toString();
+        String result = queueStr.substring(0, length);
+        queueStr = queueStr.replace(result, "");
+        return result;
     }
 
 

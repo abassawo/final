@@ -9,6 +9,8 @@ public class Test {
         queue.enqueue("This is a test.");
         if (queue.length() != 30) throw new AssertionError();
         String s = queue.dequeue(10);
+        System.out.println(queue.length());
+
         if (queue.length() != 20) throw new AssertionError();
         System.out.println(s);
         if (!s.equals("Hello, wor")) throw new AssertionError();
